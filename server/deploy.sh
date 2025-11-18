@@ -65,14 +65,8 @@ fi
 
 # Setup MongoDB database
 echo "🍃 Setting up MongoDB database..."
-mongosh --eval "
-use doa-voting-prod;
-db.createUser({
-  user: 'doauser',
-  pwd: 'secure-password-change-this',
-  roles: [{ role: 'readWrite', db: 'doa-voting-prod' }]
-});
-"
+chmod +x setup-database.sh
+sudo ./setup-database.sh
 
 # Start application with PM2
 echo "🚀 Starting application with PM2..."
